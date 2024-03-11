@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     //formKey.currentState!.validate();
     return Scaffold(
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Form(
