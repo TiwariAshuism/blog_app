@@ -40,6 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Form(
+            key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -63,7 +64,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 15),
                 AuthField(
                   hintText: 'Password',
-                  obscureText: true,
+                  isObscureText: true,
                   controller: passwordController,
                 ),
                 const SizedBox(height: 20),
@@ -71,11 +72,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   buttonText: 'Sign Up',
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      context.read<AuthBloc>().add(AuthSignUp(
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim(),
-                            name: nameController.text.trim(),
-                          ));
+                      print(passwordController.text.trim());
+                      context.read<AuthBloc>().add(
+                            AuthSignUp(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                              name: nameController.text.trim(),
+                            ),
+                          );
                     }
                   },
                 ),

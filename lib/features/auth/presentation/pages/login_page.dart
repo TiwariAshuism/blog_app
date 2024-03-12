@@ -53,13 +53,17 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 15),
                 AuthField(
                   hintText: 'Password',
-                  obscureText: true,
+                  isObscureText: true,
                   controller: passwordController,
                 ),
                 const SizedBox(height: 20),
                 AuthGradientButton(
                   buttonText: 'Sign In',
-                  onPressed: () {},
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      //print(formKey.currentState!.validate());
+                    }
+                  },
                 ),
                 const SizedBox(height: 20),
                 GestureDetector(
