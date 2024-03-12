@@ -15,7 +15,7 @@ abstract interface class AuthRemoteDataSource {
 
 class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
   final SupabaseClient supabaseClient;
-  AuthRemoteDataSourceImp({required this.supabaseClient});
+  AuthRemoteDataSourceImp( this.supabaseClient);
 
   @override
   Future<String> loginWithEmailPassword(
