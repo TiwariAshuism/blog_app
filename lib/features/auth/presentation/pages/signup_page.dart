@@ -2,6 +2,7 @@ import 'package:blog_app/core/common/loader.dart';
 import 'package:blog_app/core/utils/show_snacbar.dart';
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,6 +51,12 @@ class _SignUpPageState extends State<SignUpPage> {
             builder: (context, state) {
               if (state is AuthLoading) {
                 return const Loader();
+              } else if (state is AuthSuccess) {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  BlogPage.route(),
+                  (route) => false,
+                );
               }
               return Form(
                 key: formKey,

@@ -2,6 +2,7 @@ import 'package:blog_app/core/common/loader.dart';
 import 'package:blog_app/core/utils/show_snacbar.dart';
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
+import 'package:blog_app/features/blog/presentation/pages/blog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,10 +40,16 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: BlocConsumer<AuthBloc, AuthState>(
-            listener: (context, state) {
+            listener: (context, state) {  
               if (state is AuthFailure) {
                 showSnackBar(context, state.message);
-              } else if (state is AuthSuccess) {}
+              } else if (state is AuthSuccess) {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  BlogPage.route(),
+                  (route) => false,
+                );
+              }
             },
             builder: (context, state) {
               if (state is AuthLoading) {
