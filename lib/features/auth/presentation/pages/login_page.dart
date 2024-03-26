@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: BlocConsumer<AuthBloc, AuthState>(
-            listener: (context, state) {  
+            listener: (context, state) {
               if (state is AuthFailure) {
                 showSnackBar(context, state.message);
               } else if (state is AuthSuccess) {
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Sign Up.',
+                      'Login',
                       style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
