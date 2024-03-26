@@ -1,6 +1,7 @@
 import 'package:blog_app/core/common/loader.dart';
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/core/utils/show_snacbar.dart';
+import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/blog/presentation/bloc/blog_bloc.dart';
 import 'package:blog_app/features/blog/presentation/pages/add_new_page.dart';
 import 'package:blog_app/features/blog/presentation/widgets/blog_card.dart';
@@ -29,7 +30,15 @@ class _BlogPageState extends State<BlogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Blog App'),
+        title: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            if (state is AuthSuccess) {
+              final name = state.user.name.toString();
+              return Text("Hi 👋🏻 $name");
+            }
+            return const Text('Blog App');
+          },
+        ),
         actions: [
           IconButton(
             onPressed: () {
